@@ -1,0 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+POST         /payment/start                                         controller.PaymentController.startPayment
+GET          /payment-types/:region                                 controller.PaymentController.getPaymentTypes(region)
+GET          /payment/perform-inquiry/:internalReference            controller.PaymentEventController.performInquiry(internalReference)
+GET          /payment-submission/confirmation                       controller.PaymentEventController.receivePaymentSubmissionRedirect
+GET          /notify                                                controller.PaymentEventController.receivePaymentEvent
+POST         /report                                                controller.WorldPayTransactionReportController.receiveTransactionReport
+GET          /dailyreport                                           controller.DailyReportController.report
+
+# Management
+GET          /healthcheck                                           controller.ManagementController.healthcheck

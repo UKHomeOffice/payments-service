@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paymentService merchantCode="MERCHANTCODE" version="1.4">
+    <notify messageType="TransferReport">
+        <report reportType="transfer" batchId="5"
+                settlementCurrency="USD" brandId="2">
+            <creationDate>
+                <date dayOfMonth="29" month="7" year="2014"/>
+            </creationDate>
+            <orderStatusEvent orderCode="0000000000001">
+                <payment>
+                    <paymentMethod>VISA_CREDIT-SSL</paymentMethod>
+                    <amount value="201300" currencyCode="CNY" exponent="2"
+                            debitCreditIndicator="credit"/>
+                    <lastEvent>SETTLED</lastEvent>
+                    <ISO8583ReturnCode code="0"
+                                       description="NOT SUPPORTED YET"/>
+                    <balance accountType="SETTLED_BIBIT_COMMISSION">
+                        <amount value="711" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </balance>
+                    <balance accountType="SETTLED_BIBIT_NET">
+                        <amount value="30897" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </balance>
+                </payment>
+                <journal journalType="SETTLED" description="">
+                    <bookingDate>
+                        <date dayOfMonth="21" month="7" year="2014" hour="7"
+                              minute="56" second="3"/>
+                    </bookingDate>
+                    <accountTx accountType="IN_PROCESS_CAPTURED"
+                               batchId="20">
+                        <amount value="201300" currencyCode="CNY" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </accountTx>
+                    <accountTx accountType="SETTLED_BIBIT_COMMISSION">
+                        <amount value="711" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </accountTx>
+                    <accountTx accountType="SETTLED_BIBIT_NET" batchId="5">
+                        <amount value="30897" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </accountTx>
+                </journal>
+            </orderStatusEvent>
+            <orderStatusEvent orderCode="3030000707820">
+                <payment>
+                    <paymentMethod>MASTER_CARD</paymentMethod>
+                    <amount value="91300" currencyCode="DOLLAR" exponent="2"
+                            debitCreditIndicator="credit"/>
+                    <lastEvent>REFUNDED</lastEvent>
+                    <ISO8583ReturnCode code="0"
+                                       description="NOT SUPPORTED YET"/>
+                    <balance accountType="SETTLED_BIBIT_NET">
+                        <amount value="309" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </balance>
+                    <balance accountType="SETTLED_BIBIT_COMMISSION">
+                        <amount value="323" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </balance>
+                </payment>
+                <journal journalType="REFUNDED" description="">
+                    <bookingDate>
+                        <date dayOfMonth="27" month="7" year="2014" hour="7"
+                              minute="56" second="3"/>
+                    </bookingDate>
+                    <accountTx accountType="SETTLED_BIBIT_NET" batchId="5">
+                        <amount value="14336" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </accountTx>
+                    <accountTx accountType="IN_PROCESS_CAPTURED"
+                               batchId="20">
+                        <amount value="91300" currencyCode="CNY" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </accountTx>
+                </journal>
+            </orderStatusEvent>
+
+            <orderStatusEvent orderCode="3030000707821">
+                <payment>
+                    <paymentMethod>MASTER_CARD</paymentMethod>
+                    <amount value="91300" currencyCode="INR" exponent="2"
+                            debitCreditIndicator="credit"/>
+                    <lastEvent>REFUNDED</lastEvent>
+                    <ISO8583ReturnCode code="0"
+                                       description="NOT SUPPORTED YET"/>
+                    <balance accountType="SETTLED_BIBIT_NET">
+                        <amount value="309" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </balance>
+                    <balance accountType="SETTLED_BIBIT_COMMISSION">
+                        <amount value="323" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </balance>
+                </payment>
+                <journal journalType="REFUNDED" description="">
+                    <bookingDate>
+                        <date dayOfMonth="27" month="7" year="2014" hour="7"
+                              minute="56" second="3"/>
+                    </bookingDate>
+                    <accountTx accountType="SETTLED_BIBIT_NET" batchId="5">
+                        <amount value="14336" currencyCode="USD" exponent="2"
+                                debitCreditIndicator="debit"/>
+                    </accountTx>
+                    <accountTx accountType="IN_PROCESS_CAPTURED"
+                               batchId="20">
+                        <amount value="91300" currencyCode="CNY" exponent="2"
+                                debitCreditIndicator="credit"/>
+                    </accountTx>
+                </journal>
+            </orderStatusEvent>
+
+            <journal journalType="PAYMENT_TO_MERCHANT_INITIATED" description="transfer 27-JUL-14 22.59.52.25">
+                <bookingDate>
+                    <date dayOfMonth="27" month="7" year="2014" hour="22" minute="59" second="52"/>
+                </bookingDate>
+                <accountTx accountType="SETTLED_BIBIT_NET" batchId="5">
+                    <amount value="45422560" currencyCode="USD" exponent="2" debitCreditIndicator="debit"/>
+                </accountTx>
+            </journal>
+            <journal journalType="DEPOSIT_CORRECTION" description="deposit Jul 27 2014 10:59PM. C">
+                <bookingDate>
+                    <date dayOfMonth="27" month="7" year="2014" hour="22" minute="59" second="52"/>
+                </bookingDate>
+                <accountTx accountType="DEPOSIT" batchId="1">
+                    <amount value="30685498" currencyCode="USD" exponent="2" debitCreditIndicator="debit"/>
+                </accountTx>
+                <accountTx accountType="SETTLED_BIBIT_NET" batchId="5">
+                    <amount value="30685498" currencyCode="USD" exponent="2" debitCreditIndicator="credit"/>
+                </accountTx>
+            </journal>
+
+        </report>
+    </notify>
+</paymentService>
