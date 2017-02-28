@@ -3,13 +3,14 @@ package cjp.payments.controllers
 import java.io.StringWriter
 import java.util.concurrent.ConcurrentHashMap
 import java.util.{Timer, TimerTask}
+import javax.inject.Inject
 
 import cjp.payments.util.{SessionParameter, WorldPayMacHelper, XmlHelper}
 import com.typesafe.config.{Config, ConfigFactory}
 import play.api.Logger
 import play.api.data.Form
 import play.api.data.Forms._
-import play.api.libs.ws.WS
+import play.api.libs.ws.WSClient
 import play.api.mvc.{Action, AnyContent, Controller, Results}
 
 import scala.collection.convert.decorateAsScala._
@@ -19,7 +20,7 @@ import scala.util.{Random, Try}
 import scala.xml.dtd.{DocType, PublicID}
 import scala.xml.{Elem, MinimizeMode, Node, XML => sXML}
 
-object PaymentsStub extends Controller with XmlHelper {
+class PaymentsStub @Inject() (ws: WSClient) extends Controller with XmlHelper {
 
   case class StubbedPayment(amount: String,
                             currencyCode: String,
@@ -346,7 +347,7 @@ object PaymentsStub extends Controller with XmlHelper {
     val endpoint = baseUrl + "?" + parameters
     logger.info(s"Sending notification to : $endpoint")
     for {
-      result <- WS.url(endpoint).get()
+      result <- ws.url(endpoint).get()
     } yield {
       result.status
     }

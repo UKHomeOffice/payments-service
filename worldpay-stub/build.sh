@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
 echo "[build.sh] building..."
-./sbt dist
+activator dist
 echo "[build.sh] done"
