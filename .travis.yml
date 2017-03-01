@@ -1,0 +1,10 @@
+language: scala
+jdk:
+  - oraclejdk8
+scala:
+  - 2.11.2
+script:
+  - cd worldpay-stub
+  - ./bin/activator clean compile test
+  - cd ../payments
+  - sbt clean compile test
