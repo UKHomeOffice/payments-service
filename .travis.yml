@@ -1,0 +1,8 @@
+language: scala
+services: mongodb
+jdk:
+  - oraclejdk8
+scala:
+  - 2.10.4
+script:
+  - ./bin/activator clean compile test

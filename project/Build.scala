@@ -24,7 +24,7 @@ object ApplicationBuild extends Build {
     "org.json4s" %% "json4s-jackson" % "3.2.4"
   )
 
-  lazy val main = Project(appName, file("payments")).enablePlugins(play.PlayScala).settings(
+  lazy val main = Project(appName, file(".")).enablePlugins(play.PlayScala).settings(
       version := appVersion,
       libraryDependencies ++= appDependencies,
       libraryDependencies += ws,
@@ -35,24 +35,12 @@ object ApplicationBuild extends Build {
       parallelExecution in ScctPlugin.ScctTest := false,
       libraryDependencies += filters,
       parallelExecution in Test := false,
-      addTestReportOption(Test),
       routesImport += "binder.PathBinders._"
       //scalacOptions ++= Seq("-unchecked", "-deprecation","-feature")
     )
-    .settings(ScctPlugin.instrumentSettings: _*) // scct
     .settings(SbtStartScript.startScriptForClassesSettings: _*)
     .settings(net.virtualvoid.sbt.graph.Plugin.graphSettings: _*)
 
-  lazy val root = project.in(file("."))
-    .settings(scalaVersion := "2.10.4")
-    .settings(ScctPlugin.mergeReportSettings: _*)
-    .settings(javaOptions += "-Xmx333M")
-    .aggregate(main)
-
   override def rootProject = Some(main)
 
-  def addTestReportOption(conf: Configuration, directory: String = "test-reports") = {
-    val testResultDir = s"payments/target/$directory"
-    testOptions in conf += Tests.Argument(TestFrameworks.ScalaTest, "-u", testResultDir)
-  }
 }

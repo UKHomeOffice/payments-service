@@ -44,7 +44,7 @@ class WorldpayConfigurationSpec extends WordSpec with Matchers {
       westernEuropeConfig.paymentTypes shouldBe Set("VISA-SSL", "ECMC-SSL", "AMEX-SSL", "MAESTRO-SSL")
       westernEuropeConfig.installationId shouldBe "123"
       val ukConfig: WorldPayProfile = WorldPayConfiguration("DCJ").profile("uk").get
-      ukConfig.password shouldBe "password"
+      ukConfig.password shouldBe "password_removed"
 
     }
 
